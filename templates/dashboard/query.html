@@ -1,0 +1,189 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <form class="d-flex">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control form-control-light" id="dash-daterange">
+                                                <span class="input-group-text bg-primary border-primary text-white">
+                                                    <i class="mdi mdi-calendar-range font-13"></i>
+                                                </span>
+                                            </div>
+                                            <a href="javascript: void(0);" class="btn btn-primary ms-2">
+                                                <i class="mdi mdi-autorenew"></i>
+                                            </a>
+                                            <a href="javascript: void(0);" class="btn btn-primary ms-1">
+                                                <i class="mdi mdi-filter-variant"></i>
+                                            </a>
+                                        </form>
+                                    </div>
+                                    <h4 class="page-title">Qidiruv</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <h4 class="header-title">Bannerlar ro'yxati</h4>
+                                <table class="table table-striped table-centered mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Sarlavha</th>
+                                        <th>Tana qism</th>
+                                        <th>Batafsil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for banner in banners %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{banner.title}}</td>
+                                        <td>{{banner.description}}</td>
+
+                                        <td class="table-action">
+                                            <a href="{% url 'dashboard:detail_banner' banner.id %}" class="action-icon"> <i class=" ri-share-forward-2-line"></i></a>
+                                        </td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <h4 class="header-title">Servicelar ro'yxati</h4>
+                                <table class="table table-striped table-centered mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Icon</th>
+                                        <th>Nom</th>
+                                        <th>Maluumot</th>
+                                        <th>Harakatlar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for service in services   %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td> <img src="{{service.icon.url}}" alt="table-user" class="me-2 " /></td>
+                                        <td>{{service.name}}</td>
+                                        <td>{{service.body}}</td>
+                                        <td class="table-action">
+                                            <a href="{% url 'dashboard:detail_service' service.id %}" class="action-icon"> <i class=" ri-share-forward-2-line"></i></a>    
+                                        
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <h4 class="header-title">Prcielar ro'yxati</h4>
+                                <table class="table table-striped table-centered mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Narx</th>
+                                        <th>Status</th>
+                                        <th>Malumotlar</th>
+                                        <th>Harakatlar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for price in prices %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{price.price}}</td>
+                                        <td>{{price.status}}</td>
+                                        <td>{{price.body}}</td>
+                                        <td class="table-action">
+                                            <a href="{% url 'dashboard:detail_price' price.id %}" alt="batafsil" class="action-icon"> <i class=" ri-share-forward-2-line"></i></a>   
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <h4 class="header-title">Contactlar ro'yxati</h4>
+                                <table class="table table-striped table-centered mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ism</th>
+                                        <th>email</th>
+                                        <th>Telefon</th>
+                                        <th>Xabar</th>
+                                        <th>Ko'rilgan</th>
+                                        <th>Vaqti</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for contact in contacts %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{contact.name}}</td>
+                                        <td>{{contact.email}}</td>
+                                        <td>{{contact.phone}}</td>
+                                        <td>{{contact.message}}</td>
+                                        <td>{{contact.is_show}}</td>
+                                        <td>{{contact.created_at}}</td>
+                                        
+                                    
+                                        <td class="table-action">
+                                            <a href="{% url 'dashboard:detail_contact' contact.id %}" class="action-icon"> <i class=" ri-share-forward-2-line"></i></a>
+                                        </td>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- container -->
+
+                </div>
+                <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-end footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+{% endblock%}
