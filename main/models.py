@@ -20,7 +20,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
     banner = models.ImageField(upload_to='banner/')
-    date = models.DateTimeField()
+    date = models.DateField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     region = models.ForeignKey(Region, on_delete=models.CASCADE, blank=True, null=True)

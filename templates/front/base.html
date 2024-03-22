@@ -61,33 +61,24 @@
                                 <ul>
                                     <li><a href="{% url 'main:index' %}">Bosh Sahifa</a></li>
                                     <li><a href="#">Region</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li class="title">Europe</li>
-                                                <li><a href="#">United Kingdom</a></li>
-                                                <li><a href="#">Germany</a></li>
-                                                <li><a href="#">Latvia</a></li>
-                                                <li><a href="#">Poland</a></li>
-                                                <li><a href="#">Italy</a></li>
-                                                <li><a href="#">France</a></li>
-                                                <li><a href="#">Crotia</a></li>
+                                            <ul class="dropdown">
+                                                {% for r in region %}
+                                                <li><a href="{% url 'main:region_select' r.id %}">{{r.name}}</a></li>
+                                                {% endfor %}
                                             </ul>
                                         
-                                        </div>
                                     </li>
                                     
                             
                                     <li><a href="#">Kategoria</a>
                                         <ul class="dropdown">
                                             {% for cate in category %}                                            
-                                                 <li><a href="#">{{cate.name}}</a></li>
+                                                 <li><a href="{% url 'main:category' cate.id %}">{{cate.name}}</a></li>
                                             {% endfor %}
                                         </ul>
                                     </li>
                                     <li><a href="#">Qo'shimcha</a>
                                         <ul class="dropdown">
-                                            <li><a href="catagory.html">Catagory</a></li>
-                                            <li><a href="{% url 'main:single_post' %}">Single Post</a></li>
                                             <li><a href="elements.html">Elements</a></li>
                                            
                                         </ul>
@@ -169,6 +160,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{% static 'front/js/plugins/plugins.js' %}"></script>
     <!-- Active js -->
     <script src="{% static 'front/js/active.js' %}"></script>
+    <script>
+        n =  new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate();
+        document.getElementById("date-now").innerHTML = m + "/" + d + "/" + y;
+    </script>
 </body>
 
 </html>

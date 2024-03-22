@@ -27,6 +27,11 @@
 
         <!-- Icons css -->
         <link href="{% static 'dashboard/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- Quill css -->
+        <link href="{% static 'dashboard/vendor/quill/quill.core.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'dashboard/vendor/quill/quill.snow.css' %}" rel="stylesheet" type="text/css" />                                                  
+                                                                    
     </head>
 
     <body>
@@ -219,6 +224,42 @@
                                     </li>
                                     <li>
                                         <a href="{% url 'dashboard:list_category' %}">Kategoryalar ro'yxati</a>
+                                    </li><hr>
+                                </ul>
+
+                            </div>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarDashboards2" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                                <i class="uil-location-point"></i>
+                                <span> Region </span>
+                            </a>
+                            <div class="collapse" id="sidebarDashboards2">
+                                <ul class="side-nav-second-level">
+                                    <hr>
+                                    <li>
+                                        <a href="{% url 'dashboard:create_region' %}">Region yaratish</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'dashboard:list_region' %}">Regionlar ro'yxati</a>
+                                    </li><hr>
+                                </ul>
+
+                            </div>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarDashboards3" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                                <i class="mdi mdi-newspaper-variant-multiple-outline"></i>
+                                <span> Yangilik </span>
+                            </a>
+                            <div class="collapse" id="sidebarDashboards3">
+                                <ul class="side-nav-second-level">
+                                    <hr>
+                                    <li>
+                                        <a href="{% url 'dashboard:create_news' %}">Yangilik yaratish</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'dashboard:list_news' %}">Yangiliklar ro'yxati</a>
                                     </li><hr>
                                 </ul>
 
@@ -972,6 +1013,14 @@
         <!-- App js -->
         <script src="{% static 'dashboard/js/app.min.js' %}"></script>
 
+
+        <!-- quill js -->
+        <script src="{% static 'dashboard/vendor/quill/quill.min.js' %}"></script>
+        <!-- quill Init js-->
+        <script src="{% static 'dashboard/js/pages/demo.quilljs.js' %}"></script>
+                                                                    
+
+
         <script>
             let message_ele = document.getElementById('message_container');
 
@@ -979,6 +1028,24 @@
                 message_ele.style.display = 'none';
             }, 3000);
         </script>
+        <script type = "text/javascript">
+            var counter = 0;
+            function AddFileUpload()
+            {
+                 var div = document.createElement('DIV');
+                 div.innerHTML = '<input id="file' + counter + '" name = "img' + counter +
+                                 '" type="file" />' +
+                                 '<input id="Button' + counter + '" type="button" ' +
+                                 'value="Remove" onclick = "RemoveFileUpload(this)" />';
+                 document.getElementById("FileUploadContainer").appendChild(div);
+                 counter++;
+            }
+            function RemoveFileUpload(div)
+            {
+                 document.getElementById("FileUploadContainer").removeChild(div.parentNode);
+            }
+        </script>
+        
 
     </body>
 </html>
