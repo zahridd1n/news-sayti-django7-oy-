@@ -13,11 +13,13 @@
                     <div class="row">
                         <!-- Single Blog Post Area -->
                         {% for blog in head_blog %}
-                        <div class="col-6" style="height: 500px;">
+                        <div class="col-6" style="height: 600px;">
+                            
                             <div class="single-blog-post style-1" data-animation="fadeInUpBig" data-delay="100ms" data-duration="1000ms">
                                 <!-- Blog Thumbnail -->
+                                
                                 <div class="blog-thumbnail bg-overlay">
-                                    <a href="{% url 'main:post_detail' blog.id %}"><img src="{{blog.banner.url}}" alt=""></a>
+                                    <a href="{% url 'main:post_detail' blog.id %}"><img  src="{{blog.banner.url}}" alt="" style="height: 500px;" ></a>
                                 </div>
 
                                 <!-- Blog Content -->
@@ -40,11 +42,11 @@
                     <div class="row">
                     <!-- Single Blog Post Area -->
                     {% for blog in head_blog %}
-                    <div class="col-6" style="height: 500px;">
+                    <div class="col-6" style="height: 600px;">
                         <div class="single-blog-post style-1" data-animation="fadeInUpBig" data-delay="100ms" data-duration="1000ms">
                             <!-- Blog Thumbnail -->
                             <div class="blog-thumbnail bg-overlay">
-                                <a href="{% url 'main:post_detail' blog.id %}"><img src="{{blog.banner.url}}" alt=""></a>
+                                <a href="{% url 'main:post_detail' blog.id %}"><img src="{{blog.banner.url}}" alt="" style="height: 500px;"></a>
                             </div>
 
                             <!-- Blog Content -->

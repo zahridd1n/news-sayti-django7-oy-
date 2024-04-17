@@ -3,17 +3,13 @@ from .. import models
 
 
 def index(request):
-    category = models.Category.objects.all()
-    region = models.Region.objects.all()
+    categorys = models.Category.objects.all()
+    regions = models.Region.objects.all()
     blog = models.Post.objects.all()
-    last = blog.last()
-    last2 = blog[len(blog) - 2]
-    head_blog =[last,last2]
-    # for blog in models.Post.objects.all():
-    #     if len(head_blog) < 3 :
+    head_blog = blog.filter().order_by('-id')[:2]
     context = {
-        'category': category,
-        'region': region,
+        'category': categorys,
+        'region': regions,
         'head_blog': head_blog,
     }
     #         head_blog.append(blog)
@@ -29,14 +25,14 @@ def contact(request):
 
 
 def category(request, id):
-    category = models.Category.objects.all()
-    region = models.Region.objects.all()
+    categorys = models.Category.objects.all()
+    regions = models.Region.objects.all()
     categor = models.Category.objects.get(id=id)
     posts = models.Post.objects.filter(category=categor)
     context = {
-        'category': category,
+        'category': categorys,
         'posts': posts,
-        'region': region
+        'region': regions
     }
     return render(request, 'front/catagory.html', context)
 
@@ -47,7 +43,7 @@ def region(request, id):
     region = models.Region.objects.all()
     posts = models.Post.objects.filter(region=region_item)
     context = {
-        'region_item':region_item,
+        'region_item': region_item,
         'posts': posts,
         'region': region,
         'category': category

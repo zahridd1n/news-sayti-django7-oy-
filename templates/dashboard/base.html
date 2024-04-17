@@ -67,6 +67,7 @@
                             </a>
                         </div>
 
+
                         <!-- Sidebar Menu Toggle Button -->
                         <button class="button-toggle-menu">
                             <i class="mdi mdi-menu"></i>
@@ -81,6 +82,11 @@
                                 <span></span>
                             </div>
                         </button>
+                       
+                        <a href="{% url 'main:index' %}" class="input-group-text btn btn-primary" style="border-radius: 4px;">
+                            <i class=" ri-home-smile-fill
+                            "></i> Front 
+                        </a>
 
                         <!-- Topbar Search Form -->
                         <div class="app-search dropdown d-none d-lg-block">
@@ -94,6 +100,9 @@
 
                             
                         </div>
+
+
+
                     </div>
 
                     <ul class="topbar-menu d-flex align-items-center gap-3">
@@ -1028,24 +1037,6 @@
                 message_ele.style.display = 'none';
             }, 3000);
         </script>
-        <script type = "text/javascript">
-            var counter = 0;
-            function AddFileUpload()
-            {
-                 var div = document.createElement('DIV');
-                 div.innerHTML = '<input id="file' + counter + '" name = "img' + counter +
-                                 '" type="file" />' +
-                                 '<input id="Button' + counter + '" type="button" ' +
-                                 'value="Remove" onclick = "RemoveFileUpload(this)" />';
-                 document.getElementById("FileUploadContainer").appendChild(div);
-                 counter++;
-            }
-            function RemoveFileUpload(div)
-            {
-                 document.getElementById("FileUploadContainer").removeChild(div.parentNode);
-            }
-        </script>
-        
 
     </body>
 </html>

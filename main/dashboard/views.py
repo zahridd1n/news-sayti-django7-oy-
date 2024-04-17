@@ -222,11 +222,10 @@ def create_news(request):
                 region_id=region_id
             )
 
-            new_id = news.id
-            if request.FILES.get('img'):
-                img = request.FILES['img']
+            images = request.FILES.getlist('img')
+            for img in images:
                 image = models.PostImg.objects.create(
-                    post=new_id,
+                    post=news,
                     img=img,
                 )
 
@@ -287,6 +286,12 @@ def edit_news(request, id):
             category_id=category_id,
             region_id=region_id
         )
+        images = request.FILES.getlist('img')
+        for img in images:
+            image = models.PostImg.objects.create(
+                post=models.Post.objects.get(id=id),
+                img=img,
+            )
         # messages.success(request, 'News updated successfully')
         return redirect('dashboard:detail_news', post.id)
 
