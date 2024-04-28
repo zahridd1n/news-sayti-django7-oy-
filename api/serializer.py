@@ -12,7 +12,7 @@ class UserSerializer(ModelSerializer):
 class CategoryListSerializer(ModelSerializer):
     class Meta:
         model = models.Category
-        fields = ['name']
+        fields = ['id', 'name']
 
 
 class CategoryDetailSerializer(ModelSerializer):
@@ -21,17 +21,33 @@ class CategoryDetailSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class PostImageSerializer(ModelSerializer):
+    class Meta:
+        model = models.PostImg
+        fields = ['post', 'img']
+
+
+class PostVideoSerializer(ModelSerializer):
+    class Meta:
+        model = models.PostVideo
+        fields = ['post', 'video', 'video_url']
+
+
 class PostListSerializer(ModelSerializer):
     author = UserSerializer()
+    post_img = PostImageSerializer(many=True)
+    post_video = PostVideoSerializer(many=True)
 
     class Meta:
         model = models.Post
-        fields = ['id', 'title', 'date', 'author']
+        fields = ['id', 'title', 'date', 'author', 'banner', 'post_img', 'post_video']
         depth = 1
 
 
 class PostDetailSerializer(ModelSerializer):
     author = UserSerializer()
+    post_img = PostImageSerializer(many=True)
+    post_video = PostVideoSerializer(many=True)
 
     class Meta:
         model = models.Post
@@ -43,7 +59,7 @@ class PostDetailSerializer(ModelSerializer):
 class RegionListSerializer(ModelSerializer):
     class Meta:
         model = models.Region
-        fields = ['name']
+        fields = ['id', 'name']
 
 
 class RegionDetailSerializer(ModelSerializer):

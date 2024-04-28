@@ -25,6 +25,14 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     region = models.ForeignKey(Region, on_delete=models.CASCADE, blank=True, null=True)
 
+    @property
+    def post_img(self):
+        return PostImg.objects.filter(post=self)
+
+    @property
+    def post_video(self):
+        return PostVideo.objects.filter(post=self)
+
 
 class PostImg(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
